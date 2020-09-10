@@ -81,14 +81,91 @@ need to do following:
 
 ```
 
-- Install dependencies
-
-
-### 2. Add initial configuration files
-
- - Add lerna.json to `/mf-app-root`
-                    
+- Install dependencies under `/mf-app-root`
  
+
+```
+#install lerna
+npm ci
+
+#npm install in all micro apps that are under /packages/
+lerna bootstrap
+
+```
+
+
+### 3. Update Microapps angular under `/mf-app-root/packages/content-item-app`
+
+ Create new file `bootstrap.ts`s under:
+ 
+```
+/mf-app-root/packages/content-item-app/src/bootstrap.ts
+
+```
+with following content (this is copied content from main.ts):
+
+
+
+```
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { enableProdMode } from '@angular/core';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+
+
+```
+                    
+- Add following import into existing main.ts                    
+ `step3/mf-app-root/packages/content-item-app/src/main.ts`
+ 
+ ```
+import('./bootstrap');
+
+```
+ 
+ 
+ ### 3. Build Micro-apps 
+ 
+ Before we can build our project you need to now configure module federation to expose remote endpoints and create some 
+ component that can be exposed as remote point. 
+ 
+ - Create new component `DownloadComponent` in our angular project and add it to default `AppModule`
+ - Expose this components as remote end-point inside:
+  `step3/mf-app-root/ng9-module-federation-builder/webpack.config.js`
+  
+  you should have something like this:
+  
+```
+const mfa = {
+  ngConfigPath: '../packages/content-item-apps/angular.json',
+  name: 'content-item-app',
+  libName: 'mfa',
+  port: 3002,
+  publicPath: 'http://localhost:3002/',
+  entryModule: '../packages/content-item-apps/src/app/app.module#AppModule',
+  shared: ['@angular/core', '@angular/common', '@angular/router'],
+  exposes: {
+    './Download': '../packages/content-item-apps/src/app/download.component.ts's
+  }
+};
+```
+
+- Build remote endpoints
+
+```
+lerna run build
+npm run build --prefix ng9-module-federation-builder/
+
+```
+ 
+
    
    
 
