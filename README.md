@@ -1,6 +1,6 @@
 ### How to enable Module Federation in your project
 
-Since Module Federation (MF) in early stage and requires webpack 5 + some patched angular libraries 
+Since Module Federation (MF)  is still in early stage and it requires webpack 5 + some patched angular libraries 
 we need to do a few steps to make it work.
 
 
