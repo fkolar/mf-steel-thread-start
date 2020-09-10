@@ -11,7 +11,7 @@ we need to do a few steps to make it work.
 ```
 
 
-### 2. Create new Folder structure
+### 2. New folder structure
 
 Having existing angular project `step1/content-item-app` for which you want to add MF support, you 
 need to do following:
@@ -39,7 +39,15 @@ need to do following:
 
  - Copy `ng9-module-federation-builder` into your project from this repository https://github.com/valorkin/sap-ng-mf/tree/master/ng9-module-federation-builder
  
- - Add `package.json` and `lerna.json ` into your new project root   /mf-app-root/ 
+  ```html
+      /mf-app-root/                
+                  packages/
+                  ng9-module-federation-builder/
+ 
+ ```
+ 
+ 
+ - Add `package.json` and `lerna.json ` into your new project root  ` mf-app-root/` 
  
  **package.json**
  ```
@@ -91,8 +99,7 @@ npm ci
 #npm install in all micro apps that are under /packages/
 lerna bootstrap
 
-cd ng9-module-federation-builder/
-npm i
+npm i --prefix=ng9-module-federation-builder/
 ```
 
 
@@ -142,7 +149,7 @@ import('./bootstrap');
  
  
  
- ### 3. Build Micro-apps 
+ ### 5. Build Micro-apps 
  
  Before we can build our project you need to now configure module federation to expose remote endpoints and create some 
  component that can be exposed as remote point. 
@@ -171,9 +178,13 @@ const mfa = {
 - Build remote endpoints
 
 ```
-cd prefix packages/content-item-apps
+cd  packages/content-item-apps
 ng builds
-npm run build --prefix ng9-module-federation-builder/
+
+cd ../../ng9-module-federation-builder
+npm run build
+npm run serve:app
+
 
 ```
 

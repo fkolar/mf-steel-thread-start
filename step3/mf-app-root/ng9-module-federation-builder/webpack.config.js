@@ -10,8 +10,8 @@ const mfa = {
   ngConfigPath: '../packages/content-item-app/angular.json',
   name: 'content-item-app',
   libName: 'mfa',
-  port: 3002,
-  publicPath: 'http://localhost:3002/',
+  port: 3000,
+  publicPath: 'http://localhost:3000/',
   entryModule: '../packages/content-item-app/src/app/app.module#AppModule',
   shared: ['@angular/core', '@angular/common', '@angular/router'],
   exposes: {

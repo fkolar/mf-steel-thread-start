@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "build": "webpack",
-    "serve:app": "serve dist/mfe1 -l 3000 -s"
+    "serve:app": "serve ../dist/content-item-app/ -l 3000 "
   },
   "private": true,
   "dependencies": {
