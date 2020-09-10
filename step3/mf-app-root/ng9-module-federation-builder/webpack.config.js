@@ -7,7 +7,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 
 const mfa = {
-  ngConfigPath: '../packages/c/angular.json',
+  ngConfigPath: '../packages/content-item-app/angular.json',
   name: 'content-item-app',
   libName: 'mfa',
   port: 3002,

@@ -91,6 +91,8 @@ npm ci
 #npm install in all micro apps that are under /packages/
 lerna bootstrap
 
+cd ng9-module-federation-builder/
+npm i
 ```
 
 
@@ -130,6 +132,15 @@ import('./bootstrap');
 
 ```
  
+ -- Turn off Ivy in your Angular10 project's `step3/mf-app-root/packages/content-item-app/tsconfig.base.json`
+ 
+ ```
+ "angularCompilerOptions": {
+    "enableIvy": false
+  }
+```
+ 
+ 
  
  ### 3. Build Micro-apps 
  
@@ -161,10 +172,14 @@ const mfa = {
 
 ```
 cd prefix packages/content-item-apps
-ng build
+ng builds
 npm run build --prefix ng9-module-federation-builder/
 
 ```
+
+
+`Currently our Webpack configuration does not process scss files.` 
+
  
 
    
