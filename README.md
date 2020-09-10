@@ -6,6 +6,8 @@ we need to do a few steps to make it work.
 
 ### 1. Create angular project
 
+_Skip this step if you have existing repo_
+
 ```
  ng new content-item-app
 ```
