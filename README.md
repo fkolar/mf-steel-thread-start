@@ -160,7 +160,8 @@ const mfa = {
 - Build remote endpoints
 
 ```
-lerna run build
+cd prefix packages/content-item-apps
+ng build
 npm run build --prefix ng9-module-federation-builder/
 
 ```

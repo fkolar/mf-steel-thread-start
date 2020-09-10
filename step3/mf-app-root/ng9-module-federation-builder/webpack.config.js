@@ -7,15 +7,15 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 
 const mfa = {
-  ngConfigPath: '../packages/content-item-apps/angular.json',
+  ngConfigPath: '../packages/c/angular.json',
   name: 'content-item-app',
   libName: 'mfa',
   port: 3002,
   publicPath: 'http://localhost:3002/',
-  entryModule: '../packages/content-item-apps/src/app/app.module#AppModule',
+  entryModule: '../packages/content-item-app/src/app/app.module#AppModule',
   shared: ['@angular/core', '@angular/common', '@angular/router'],
   exposes: {
-    './Download': '../packages/content-item-apps/src/app/download.component.ts's
+    './Download': '../packages/content-item-app/src/app/download.component.ts'
   }
 };
 
